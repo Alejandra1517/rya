@@ -1,0 +1,208 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+       
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-12">
+          
+
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4 ">
+                   
+                 
+                     <button class="btn btn-success" data-toggle="modal" data-target="#crearMaterial">Agregar</button>
+                   
+
+                   </div>
+                 </div>
+                  
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card mt-4">
+                      <div class="card-header">
+                        <h3 class="card-title">Materiales</h3>
+                      </div>
+
+                        
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead>
+                          <tr>
+                            <th>Categoría</th>
+                            <th>Información material</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let material of materialesArray">
+                             <td>{{ material.categoria }}</td>
+                             <td>{{ material.infoMaterial }}</td>
+                             <td>{{ material.estado }}</td>
+                             <td>{{ material.fecha }}</td>
+                             
+                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarMaterial(material.id)"><i class="fas fa-search"></i></button> <button class="btn btn-danger" (click)="eliminarMaterial()">Eliminar</button></td>
+                       
+                          </tbody>
+                         
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+
+                    <!-- /.card -->
+        
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                
+              
+          
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+     
+
+
+          </div>
+         
+
+      
+        </div>
+
+       
+
+        
+
+      </div>
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+        <div class="row p-4">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Categoría</label>
+              <input type="text" [(ngModel)]="selectedMaterial.categoria"  class="form-control" placeholder="Ingrese la categoría">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Información Material</label>
+              <input type="text" [(ngModel)]="selectedMaterial.infoMaterial" class="form-control" placeholder="Info..">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+              <input type="text" [(ngModel)]="selectedMaterial.estado" class="form-control" placeholder="Ingrese el estado">
+            </div>}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+                <input type="text" [(ngModel)]="selectedMaterial.fecha" class="form-control" placeholder="Ingrese la fecha">
+              </div>
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
+        <button type="button" class="btn btn-primary">Modificar</button>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+<!-- crearUsu -->
+<div class="modal fade" id="crearMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+             <div class="row p-2">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Categoría</label>
+                  <input type="text" [(ngModel)]="selectedMaterial.categoria"  class="form-control" placeholder="Ingrese su nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Información Material</label>
+                  <input type="text" [(ngModel)]="selectedMaterial.infoMaterial" class="form-control" placeholder="Ingrese su apellido">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                  <input type="text" [(ngModel)]="selectedMaterial.estado" class="form-control" placeholder="Ingrese su documento">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+                  <input type="number" [(ngModel)]="selectedMaterial.fecha" class="form-control" placeholder="Ingrese su telefóno">
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="agregarMaterial()" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+    </section>
+  
+
+  </div>

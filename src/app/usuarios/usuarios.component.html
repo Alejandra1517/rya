@@ -1,6 +1,4 @@
-
-
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -46,6 +44,7 @@
                         <table id="example2" class="table table-bordered table-hover">
                           <thead>
                           <tr>
+                            <th>Id</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Documento</th>
@@ -67,7 +66,7 @@
                              <td>{{ usuario.estado }}</td>
                              <td>{{ usuario.fecha }}</td>
                              
-                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario.id)">modificar</button> <button class="btn btn-danger" (click)="eliminarUsu()">eliminar</button></td>
+                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario.id)"><i class="fas fa-search"></i></button> <button class="btn btn-danger" (click)="eliminarUsu()">eliminar</button></td>
                        
                           </tbody>
                          
@@ -144,6 +143,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
         <button type="button" class="btn btn-primary">Modificar</button>
       </div>
     </div>
