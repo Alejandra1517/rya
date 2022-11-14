@@ -10,97 +10,87 @@
     </div>
     <!-- /.content-header -->
 
+ 
 
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
         <div class="row">
-          <div class="col-md-12">
-          
-
-            <section class="content">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-4 ">
-                   
-                 
-                     <button class="btn btn-success" data-toggle="modal" data-target="#crearUsu">Agregar</button>
-                   
-
-                   </div>
-                 </div>
-                  
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card mt-4">
-                      <div class="card-header">
-                        <h3 class="card-title">Usuarios</h3>
-                      </div>
-
-                        
-                      <!-- /.card-header -->
-                      <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
-                          <thead>
-                          <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Documento</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
-                            <th>Estado</th>
-                            <th>Fecha</th>
-                            <th>Acciones</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr *ngFor="let usuario of usuariosArray">
-                             <td>{{ usuario.id }}</td>
-                             <td>{{ usuario.nombre }}</td>
-                             <td>{{ usuario.apellido }}</td>
-                             <td>{{ usuario.documento }}</td>
-                             <td>{{ usuario.telefono }}</td>
-                             <td>{{ usuario.direccion }}</td>
-                             <td>{{ usuario.estado }}</td>
-                             <td>{{ usuario.fecha }}</td>
-                             
-                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario.id)"><i class="fas fa-search"></i></button> <button class="btn btn-danger" (click)="eliminarUsu()">eliminar</button></td>
-                       
-                          </tbody>
-                         
-                        </table>
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-
-                    <!-- /.card -->
-        
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-                
-              
-          
-              </div>
-              <!-- /.container-fluid -->
-            </section>
-     
-
-
-          </div>
+          <div class="col-12">
+            <h2 class="mb-5 mx-2 blockquote">Usuarios</h2>
+            <div class="card">
+              <div class="card-header">
+                <nav class="navbar bg-light mx-3">
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
          
+                    <button class="btn btn-success float-right mt-1" data-toggle="modal" data-target="#crearUsu"><i class="fa-solid fa-plus"></i></button>
+                </nav>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <section class="ftco-section">
+                  <div class="container">
+                    <div class="row justify-content-center">
+              
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="table-wrap">
 
-      
-        </div>
 
-       
-
+                          <table id="example2" class="table table-bordered table-hover">
+                            <thead class="table-dark">
+                            <tr>
+                              <th>Id</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Documento</th>
+                              <th>Teléfono</th>
+                              <th>Dirección</th>
+                              <th>Estado</th>
+                              <th>Fecha</th>
+                              <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let usuario of usuariosArray">
+                               <td>{{ usuario.id }}</td>
+                               <td>{{ usuario.nombre }}</td>
+                               <td>{{ usuario.apellido }}</td>
+                               <td>{{ usuario.documento }}</td>
+                               <td>{{ usuario.telefono }}</td>
+                               <td>{{ usuario.direccion }}</td>
+                               <td>{{ usuario.estado }}</td>
+                               <td>{{ usuario.fecha }}</td>
+                               
+                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario.id)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarUsu()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                         
+                            </tbody>
+                           
+                          </table>
+                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              
+              </div>
+              <!-- /.card-body -->
+            </div>
         
-
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
       </div>
+      <!-- /.container-fluid -->
+
+    </section>
+
 
 
 
@@ -131,9 +121,6 @@
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Documento</label>
               <input type="text" [(ngModel)]="selectedUSer.documento" class="form-control" placeholder="Ingrese su documento">
-            </div>
-            <div>
-              <button class="btn btn-success">Agregar</button>
             </div>
           </div>
         </div>
@@ -216,8 +203,6 @@
 </div>
 
 
-
-    </section>
   
 
   </div>

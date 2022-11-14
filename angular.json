@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "rya"
+  "defaultProject": "rya",
+  "cli": {
+    "analytics": "88939cbd-a65c-4bcb-891d-8b422db6758b"
+  }
 }
