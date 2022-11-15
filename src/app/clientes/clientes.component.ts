@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Clientes } from '../models/clientes'
 
@@ -8,6 +9,8 @@ import { Clientes } from '../models/clientes'
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent {
+
+  constructor(private toastrSve: ToastrService) {}
 
 
   clientesArray: Clientes[] = [
@@ -29,41 +32,58 @@ export class ClientesComponent {
 
   selectedCliente: Clientes = new Clientes();
 
-  editCliente:any = {documento:""};
+  editCliente:any = {};
 
   agregarCliente(){
   
-    // this.selectedUSer.id = this.usuariosArray.length + 1;
     this.clientesArray.push(this.selectedCliente);
 
     this.selectedCliente = new Clientes() //Limpia el campo de texto
+    
+    // this.selectedCliente.id += 1;
 
+    this.toastrSve.success('Agregado correctamente');
 
-  }
-  
-
-
-  cargarCliente(id: number){
-
-    this.editCliente.documento=id;
     
 
+
+  }
+
+
+  
+  cargarCliente(cliente: Clientes){
+
+    this.editCliente=cliente; 
+
   }
 
 
-  eliminarCliente(id: number){
+  editarCliente(){
 
-    // if (confirm("¿Está seguro de eliminar el usuario?")){
+    this.selectedCliente = this.editCliente
 
-      // alert(id)
-      this.clientesArray.slice(id, 1);
+    this.toastrSve.info('Editado correctamente')
+      
 
-      // this.cargarCl}iente()
+  }
 
-    // }
+
+
+  eliminarCliente(){
+
+    if (confirm("¿Está seguro de eliminar el usuario?")){
+
+      this.clientesArray = this.clientesArray.filter(x => x != this.selectedCliente)
+     
+      this.selectedCliente = new Clientes()
+
+      this.toastrSve.error('Eliminado correctamente')
+
+    }
 
 
   }
+
 
   
 

@@ -43,7 +43,6 @@
                           <table id="example2" class="table table-bordered table-hover">
                             <thead class="table-dark">
                             <tr>
-                              <th>Id</th>
                               <th>Cliente</th>
                               <th>Estado</th>
                               <th>Fecha inicio</th>
@@ -53,13 +52,12 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let cotizacion of cotizacionesArray">
-                               <td>{{ cotizacion.id }}</td>
                                <td>{{ cotizacion.cliente }}</td>
                                <td>{{ cotizacion.estado }}</td>
                                <td>{{ cotizacion.fechaInicio }}</td>
                                <td>{{ cotizacion.fechaDuracion }}</td>
                                
-                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarCotizacion(cotizacion.id)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCotizacion(cotizacion.id)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarCotizacion(cotizacion)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCotizacion()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
                          
                             </tbody>
                            
@@ -93,7 +91,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar cotización</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -102,19 +100,23 @@
 
         <div class="container">
              <!-- Info boxes -->
-        <div class="row p-4">
-          <div class="col-md-6">
+            <div class="row p-2">
+            <div class="col-md-12">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Id</label>
-              <input type="text" [(ngModel)]="editCotizacion.id"  class="form-control" placeholder="Ingrese su nombre">
+              <label for="exampleFormControlInput1" class="form-label">Cliente</label>
+              <input type="text" [(ngModel)]="editCotizacion.cliente" class="form-control" placeholder="Ingrese el nombre del cliente">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Documento</label>
-              <input type="text" [(ngModel)]="editCotizacion.documento" class="form-control" placeholder="Ingrese su apellido">
+              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+              <input type="text" [(ngModel)]="editCotizacion.estado" class="form-control" placeholder="Ingrese el estado">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-              <input type="text" [(ngModel)]="editCotizacion.usuario" class="form-control" placeholder="Ingrese su documento">
+              <label for="exampleFormControlInput1" class="form-label">Fecha inicio</label>
+              <input type="text" [(ngModel)]="editCotizacion.fechaInicio" class="form-control" placeholder="Ingrese la fecha de inicio">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Fecha duración</label>
+              <input type="text" [(ngModel)]="editCotizacion.fechaDuracion" class="form-control" placeholder="Ingrese la fecha de duracion">
             </div>
           </div>
         </div>
@@ -125,7 +127,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         
-        <button type="button" class="btn btn-primary">Modificar</button>
+        <button type="button" class="btn btn-primary" (click)="editarCotizacion()" data-dismiss="modal">Modificar</button>
       </div>
     </div>
 
@@ -140,40 +142,94 @@
 
 
 <!-- crearUsu -->
-<div class="modal fade" id="crearUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" id="crearUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar usuario</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Crear cotización</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <div class="container">
+        <div class="container-fluid">
              <!-- Info boxes -->
              <div class="row p-2">
-              <div class="col-md-12">
+              <div class="col-md-3">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Id</label>
-                  <input type="text" [(ngModel)]="selectedCotizacion.id"  class="form-control" placeholder="Ingrese su nombre">
+                  <label for="exampleFormControlInput1" class="form-label">Cliente</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.cliente" class="form-control">
                 </div>
+              </div>
+                <div class="col-md-3">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Documento</label>
-                  <input type="text" [(ngModel)]="selectedCotizacion.cliente" class="form-control" placeholder="Ingrese su apellido">
+                  <label for="exampleFormControlInput1" class="form-label">Servicio</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.estado" class="form-control">
                 </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-                  <input type="text" [(ngModel)]="selectedCotizacion.estado" class="form-control" placeholder="Ingrese su documento">
                 </div>
+                <div class="col-md-3">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Estado</label>
-                  <input type="number" [(ngModel)]="selectedCotizacion.fechaInicio" class="form-control" placeholder="Ingrese su telefóno">
+                  <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.fechaInicio" class="form-control">
                 </div>
+              </div>  
+              <div class="col-md-3">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                  <input type="text" [(ngModel)]="selectedCotizacion.fechaDuracion" class="form-control" placeholder="Ingrese su dirección">
+                <button class="btn btn-success">Agregar servicio</button>
+              </div>  
+            </div>  
+            </div>
+
+
+            <div class="row p-2">
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Fecha de creación</label>
+                  <input type="date" [(ngModel)]="selectedCotizacion.cliente" class="form-control">
+                </div>
+              </div>
+                <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Fecha de vencimiento</label>
+                  <input type="date" [(ngModel)]="selectedCotizacion.estado" class="form-control">
+                </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-ms-4">
+                <div class="table-wrap">
+
+
+                  <table  id="example2" class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Servicio</th>
+                      <th>Cantidad</th>
+                      <th>Cantidad</th>
+                      <th>Materiales</th>
+                      <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let cotizacion of cotizacionesArray">
+                       <td>{{ cotizacion.cliente }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td> <button class="btn btn-success" data-toggle="modal" data-target="#crearUsu"><i class="fa-solid fa-plus"></i></button></td>
+
+                       <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarCotizacion(cotizacion)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCotizacion()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                       
+                 
+                    </tbody>
+                   
+                  </table>
+                
                 </div>
               </div>
             </div>

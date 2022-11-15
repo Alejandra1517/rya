@@ -16,6 +16,9 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { ObrasComponent } from './obras/obras.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule, } from '@angular/platform-browser/animations'
+
 
 
 const appRoutes:Routes = [
@@ -52,7 +55,10 @@ const appRoutes:Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   providers: [],
   bootstrap: [AppComponent]

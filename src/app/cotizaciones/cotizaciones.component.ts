@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Cotizaciones } from '../models/cotizaciones';
 
 @Component({
@@ -24,44 +25,61 @@ export class CotizacionesComponent {
       fechaDuracion: "10/09/2022"
     }
   ];
+  
 
   selectedCotizacion: Cotizaciones = new Cotizaciones();
 
-  editCotizacion!:any;
+
+  constructor(private toastrSve: ToastrService) {}
+
+
+  editCotizacion:any = {};
 
   agregarCotizacion(){
   
-    // this.selectedUSer.id = this.usuariosArray.length + 1;
     this.cotizacionesArray.push(this.selectedCotizacion);
 
     this.selectedCotizacion = new Cotizaciones() //Limpia el campo de texto
 
+    this.toastrSve.success('Cotización agregada correctamente');
+
 
   }
+
+
   
+  cargarCotizacion(cotizacion: Cotizaciones){
 
-
-  cargarCotizacion(id: number){
-
-    this.editCotizacion=id;
-    
+    this.editCotizacion=cotizacion; 
 
   }
 
 
-  eliminarCotizacion(id: number){
+  editarCotizacion(){
 
-    // if (confirm("¿Está seguro de eliminar el usuario?")){
+    this.selectedCotizacion = this.editCotizacion
 
-      // alert(id)
-      this.cotizacionesArray.slice(id, 1);
-
-      // this.cargarCl}iente()
-
-    // }
-
+    this.toastrSve.info('Cotización modificada correctamente')
+      
 
   }
 
+
+
+  eliminarCotizacion(){
+
+    if (confirm("¿Está seguro de eliminar la cotización?")){
+
+      this.cotizacionesArray = this.cotizacionesArray.filter(x => x != this.selectedCotizacion)
+     
+      this.selectedCotizacion = new Cotizaciones()
+
+      this.toastrSve.error('Cotización eliminada correctamente')
+
+    }
+
+
+
+  }
 
 }

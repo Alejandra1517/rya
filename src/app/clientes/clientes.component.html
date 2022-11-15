@@ -43,7 +43,6 @@
                           <table id="example2" class="table table-bordered table-hover">
                             <thead class="table-dark">
                             <tr>
-                              <th>Id</th>
                               <th>Documento</th>
                               <th>Usuario</th>
                               <th>Estado</th>
@@ -53,13 +52,12 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let cliente of clientesArray">
-                               <td>{{ cliente.id }}</td>
                                <td>{{ cliente.documento }}</td>
                                <td>{{ cliente.usuario }}</td>
                                <td>{{ cliente.estado }}</td>
                                <td>{{ cliente.fecha }}</td>
                                
-                              <td><button class="btn btn-warning m-2" (click)="cargarCliente(cliente.id)" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCliente(cliente.id)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                              <td><button class="btn btn-warning m-2" (click)="cargarCliente(cliente)" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCliente()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
                          
                             </tbody>
                            
@@ -93,7 +91,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -102,19 +100,23 @@
 
         <div class="container">
              <!-- Info boxes -->
-        <div class="row p-4">
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Id</label>
-              <input type="text" [(ngModel)]="editCliente.id"  class="form-control" placeholder="Ingrese su nombre">
-            </div>
+            <div class="row p-2">
+            <div class="col-md-12">
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Documento</label>
-              <input type="text" [(ngModel)]="editCliente.documento" class="form-control" placeholder="Ingrese su apellido">
+              <input type="number" [(ngModel)]="editCliente.documento" class="form-control" placeholder="Ingrese el documento">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-              <input type="text" [(ngModel)]="editCliente.usuario" class="form-control" placeholder="Ingrese su documento">
+              <input type="text" [(ngModel)]="editCliente.usuario" class="form-control" placeholder="Ingrese el nombre de usuario">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+              <input type="text" [(ngModel)]="editCliente.estado" class="form-control" placeholder="Ingrese el estado">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+              <input type="text" [(ngModel)]="editCliente.fecha" class="form-control" placeholder="Ingrese la fecha">
             </div>
           </div>
         </div>
@@ -125,7 +127,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         
-        <button type="button" class="btn btn-primary">Modificar</button>
+        <button type="button" class="btn btn-primary" (click)="editarCliente()" data-dismiss="modal">Modificar</button>
       </div>
     </div>
 
@@ -156,24 +158,20 @@
              <div class="row p-2">
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Id</label>
-                  <input type="text" [(ngModel)]="selectedCliente.id"  class="form-control" placeholder="Ingrese su nombre">
-                </div>
-                <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Documento</label>
-                  <input type="text" [(ngModel)]="selectedCliente.documento" class="form-control" placeholder="Ingrese su apellido">
+                  <input type="number" [(ngModel)]="selectedCliente.documento" class="form-control" placeholder="Ingrese el documento">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-                  <input type="text" [(ngModel)]="selectedCliente.usuario" class="form-control" placeholder="Ingrese su documento">
+                  <input type="text" [(ngModel)]="selectedCliente.usuario" class="form-control" placeholder="Ingrese el nombre de usuario">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Estado</label>
-                  <input type="number" [(ngModel)]="selectedCliente.estado" class="form-control" placeholder="Ingrese su telefóno">
+                  <input type="text" [(ngModel)]="selectedCliente.estado" class="form-control" placeholder="Ingrese el estado">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                  <input type="text" [(ngModel)]="selectedCliente.fecha" class="form-control" placeholder="Ingrese su dirección">
+                  <input type="date" [(ngModel)]="selectedCliente.fecha" class="form-control" placeholder="Ingrese la fecha">
                 </div>
               </div>
             </div>
@@ -193,6 +191,5 @@
 </div>
 
 
-  
 
-  </div>
+</div>
