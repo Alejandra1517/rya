@@ -1,7 +1,9 @@
 export class Clientes {
-    id!: number;
+    idCliente!: number;
+    nombreCliente!: string;
     documento!: string;
-    usuario!: string;
+    telefono!: number;
+    direccion!: string;
     estado!: string;
     fecha!: string;
 }

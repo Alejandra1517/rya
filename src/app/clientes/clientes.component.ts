@@ -15,20 +15,25 @@ export class ClientesComponent {
 
   clientesArray: Clientes[] = [
     {
-      id: 1,
+      idCliente: 1,
+      nombreCliente: "Jorge123",
       documento: "156324891",
-      usuario: "Jorge123",
+      telefono: 3137632689,
+      direccion: "cll 87a",
       estado: "activo",
       fecha: "20/17/2022"
     },
     {
-      id: 2,
+      idCliente: 2,
+      nombreCliente: "Julian123",
       documento: "1026130800",
-      usuario: "Julian123",
+      telefono: 313987323,
+      direccion: "cll 20",
       estado: "activo",
       fecha: "20/17/2022"
     }
   ];
+
 
   selectedCliente: Clientes = new Clientes();
 

@@ -17,7 +17,10 @@ import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { ObrasComponent } from './obras/obras.component';
 
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule, } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule, } from '@angular/platform-browser/animations';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { CrearSolicitudComponent } from './crear-solicitud/crear-solicitud.component';
+import { ModificarSolicitudComponent } from './modificar-solicitud/modificar-solicitud.component'
 
 
 
@@ -30,7 +33,10 @@ const appRoutes:Routes = [
   {path: 'clientes', component:ClientesComponent},
   {path: 'solicitudes', component:SolicitudesComponent},
   {path: 'cotizaciones', component:CotizacionesComponent},
-  {path: 'obras', component:ObrasComponent}
+  {path: 'obras', component:ObrasComponent},
+  {path: 'configuracion', component:ConfiguracionComponent},
+  {path: 'crear-solicitud', component:CrearSolicitudComponent},
+  {path: 'modificar-solicitud', component:ModificarSolicitudComponent}
 
 
 
@@ -49,7 +55,10 @@ const appRoutes:Routes = [
     ClientesComponent,
     SolicitudesComponent,
     CotizacionesComponent,
-    ObrasComponent
+    ObrasComponent,
+    ConfiguracionComponent,
+    CrearSolicitudComponent,
+    ModificarSolicitudComponent
   ],
   imports: [
     BrowserModule,

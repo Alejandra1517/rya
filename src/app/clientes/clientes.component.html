@@ -43,8 +43,10 @@
                           <table id="example2" class="table table-bordered table-hover">
                             <thead class="table-dark">
                             <tr>
+                              <th>Nombre cliente</th>
                               <th>Documento</th>
-                              <th>Usuario</th>
+                              <th>Teléfono</th>
+                              <th>Dirección</th>
                               <th>Estado</th>
                               <th>Fecha</th>
                               <th>Acciones</th>
@@ -52,8 +54,10 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let cliente of clientesArray">
+                              <td>{{ cliente.nombreCliente }}</td>
                                <td>{{ cliente.documento }}</td>
-                               <td>{{ cliente.usuario }}</td>
+                               <td>{{ cliente.telefono }}</td>
+                               <td>{{ cliente.direccion }}</td>
                                <td>{{ cliente.estado }}</td>
                                <td>{{ cliente.fecha }}</td>
                                
@@ -91,7 +95,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -102,14 +106,24 @@
              <!-- Info boxes -->
             <div class="row p-2">
             <div class="col-md-12">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre cliente</label>
+                <input type="text" [(ngModel)]="editCliente.nombreCliente" class="form-control" placeholder="Ingrese el nombre">
+              </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Documento</label>
               <input type="number" [(ngModel)]="editCliente.documento" class="form-control" placeholder="Ingrese el documento">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-              <input type="text" [(ngModel)]="editCliente.usuario" class="form-control" placeholder="Ingrese el nombre de usuario">
+              <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+              <input type="text" [(ngModel)]="editCliente.telefono" class="form-control" placeholder="Ingrese el nombre teléfono">
             </div>
+             <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Dirección</label>
+              <input type="text" [(ngModel)]="editCliente.direccion" class="form-control" placeholder="Ingrese la dirección">
+            </div>
+
+
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Estado</label>
               <input type="text" [(ngModel)]="editCliente.estado" class="form-control" placeholder="Ingrese el estado">
@@ -158,12 +172,16 @@
              <div class="row p-2">
               <div class="col-md-12">
                 <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre cliente</label>
+                  <input type="text" [(ngModel)]="selectedCliente.nombreCliente" class="form-control" placeholder="Ingrese el nombre">
+                </div>
+                <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Documento</label>
                   <input type="number" [(ngModel)]="selectedCliente.documento" class="form-control" placeholder="Ingrese el documento">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-                  <input type="text" [(ngModel)]="selectedCliente.usuario" class="form-control" placeholder="Ingrese el nombre de usuario">
+                  <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+                  <input type="text" [(ngModel)]="selectedCliente.telefono" class="form-control" placeholder="Ingrese el teléfono">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Estado</label>

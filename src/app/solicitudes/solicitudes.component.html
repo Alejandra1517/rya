@@ -1,1 +1,192 @@
-<p>solicitudes works!</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+       
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <!-- Main content -->  
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Solicitudes</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </form>
+       
+                  <a class="button" routerLink="/app-crear-solicitud">Crisis Center</a> </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+            
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead class="table-dark">
+                            <tr>
+                              <th>Id solicitud</th>
+                              <th>Nombre Cliente</th>
+                              <th>Servicios</th>
+                              <th>Estado</th>
+                              <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let solicitud of solicitudesArray">
+                               <td>{{ solicitud.idSolicitud }}</td>
+                               <td>{{ solicitud.nombreCliente }}</td>
+                               <td>{{ solicitud.servicios }}</td>
+                               <td>{{ solicitud.estado }}</td>
+                               
+                               <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarSolicitud(solicitud)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarSolicitud()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                         
+                         
+                            </tbody>
+                         
+                        </table>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+            </div>
+            <!-- /.card-body -->
+          </div>
+      
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+
+
+    
+
+<!-- crearUsu -->
+<div class="modal fade" id="crearMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Solicitud</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+             <div class="row p-2">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Cliente</label>
+                  <input type="text" [(ngModel)]="selectedSolicitud.estado" class="form-control" placeholder="Ingrese el estado">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Servicios</label>
+                    <input type="text" [(ngModel)]="selectedSolicitud.servicios" class="form-control" placeholder="Ingrese el estado">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                  <select [(ngModel)]="selectedSolicitud.estado" class="form-select" aria-label="Default select example">
+                    <option value="Agotado">Agotado</option>
+                    <option value="Disponible">Disponible</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="agregarSolicitud()" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar solictud</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+        <div class="row p-4">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Nombre cliente</label>
+              <input type="text" [(ngModel)]="selectedSolicitud.nombreCliente "class="form-control" placeholder="Ingrese el nombre del material">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Servicios</label>
+              <input type="text" [(ngModel)]="selectedSolicitud.servicios "class="form-control" placeholder="Info..">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">Agotado</option>
+                <option value="2">Disponible</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
+        <button type="button" class="btn btn-primary">Modificar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </section>
+
+  
+
+  </div>
