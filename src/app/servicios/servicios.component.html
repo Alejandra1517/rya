@@ -1,52 +1,51 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+     
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Servicios</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </form>
        
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+                  <button class="btn btn-success float-right mt-1" data-toggle="modal" data-target="#crearUsu"><i class="fa-solid fa-plus"></i></button>
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+            
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
 
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-md-12">
-          
-
-            <section class="content">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-4 ">
-                   
-                 
-                     <button class="btn btn-success" data-toggle="modal" data-target="#crearMaterial">Agregar</button>
-                   
-
-                   </div>
-                 </div>
-                  
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card mt-4">
-                      <div class="card-header">
-                        <h3 class="card-title">Servicios</h3>
-                      </div>
-
-                        
-                      <!-- /.card-header -->
-                      <div class="card-body">
                         <table id="example2" class="table table-bordered table-hover">
-                          <thead>
+                          <thead class="table-dark">
                           <tr>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Encargado</th>
+                            <th>Id servicio</th>
+                            <th>Nombre servicio</th>
+                            <th>Categoría servicio</th>
                             <th>Estado</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
@@ -54,165 +53,137 @@
                           </thead>
                           <tbody>
                           <tr *ngFor="let servicio of serviciosArray">
-                             <td>{{ servicio.nombre }}</td>
+                            <td>{{ servicio.idServicio }}</td>
+                             <td>{{ servicio.nombreServicio }}</td>
                              <td>{{ servicio.categoria }}</td>
-                             <td>{{ servicio.encargado }}</td>
                              <td>{{ servicio.estado }}</td>
                              <td>{{ servicio.fecha }}</td>
                              
-                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarServicio(servicio.id)"><i class="fas fa-search"></i></button> <button class="btn btn-danger" (click)="eliminarServicio()">Eliminar</button></td>
+                            <td><button class="btn btn-warning m-2" (click)="cargarServicio(servicio)" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarServicio()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
                        
                           </tbody>
                          
                         </table>
+                      
                       </div>
-                      <!-- /.card-body -->
                     </div>
-
-                    <!-- /.card -->
-        
                   </div>
-                  <!-- /.col -->
                 </div>
-                <!-- /.row -->
-                
-              
-          
-              </div>
-              <!-- /.container-fluid -->
-            </section>
-     
-
-
+              </section>
+            
+            </div>
+            <!-- /.card-body -->
           </div>
-         
-
       
+          <!-- /.card -->
         </div>
-
-       
-
-        
-
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+  </section>
+
 
 
 
 <!-- modificarUsu -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar Material</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modificar servicio</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
 
-        <div class="container">
-             <!-- Info boxes -->
-        <div class="row p-4">
-          <div class="col-md-6">
+      <div class="container">
+           <!-- Info boxes -->
+          <div class="row p-2">
+          <div class="col-md-12">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nombre servicio</label>
-                <input type="text" [(ngModel)]="selectedServicio.nombre"  class="form-control" placeholder="Ingrese nombre servicio">
-              </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Categoría</label>
-              <input type="text" [(ngModel)]="selectedServicio.categoria"  class="form-control" placeholder="Ingrese la categoría">
+              <label for="exampleFormControlInput1" class="form-label">Nombre servicio</label>
+              <input type="text" [(ngModel)]="editServicio.nombreServicio" class="form-control" placeholder="Ingrese el nombre">
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Encargado</label>
-              <input type="text" [(ngModel)]="selectedServicio.encargado" class="form-control" placeholder="Ingrese el encargado">
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Estado</label>
-              <input type="text" [(ngModel)]="selectedServicio.estado" class="form-control" placeholder="Ingrese el estado">
-            </div>}
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                <input type="text" [(ngModel)]="selectedServicio.fecha" class="form-control" placeholder="Ingrese la fecha">
-              </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Categoría</label>
+            <input type="number" [(ngModel)]="editServicio.categoria" class="form-control" placeholder="Ingrese el documento">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Estado</label>
+            <select [(ngModel)]="selectedServicio.estado" class="form-select" aria-label="Default select example">
+              <option value="Agotado">Agotado</option>
+              <option value="Disponible">Disponible</option>
+            </select>
           </div>
         </div>
-        </div>
+      </div>
+      </div>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        
-        <button type="button" class="btn btn-primary">Modificar</button>
-      </div>
     </div>
-
-
-
-
-
-
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      
+      <button type="button" class="btn btn-primary" (click)="editarServicio()" data-dismiss="modal">Modificar</button>
+    </div>
   </div>
+</div>
 </div>
 
 
 
 <!-- crearUsu -->
-<div class="modal fade" id="crearMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Material</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<div class="modal fade" id="crearUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Registrar servicio</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
 
-        <div class="container">
-             <!-- Info boxes -->
-             <div class="row p-2">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Nombre servicio</label>
-                  <input type="text" [(ngModel)]="selectedServicio.nombre"  class="form-control" placeholder="Ingrese nombre servicio">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Categoría</label>
-                  <input type="text" [(ngModel)]="selectedServicio.categoria" class="form-control" placeholder="Ingrese la categoría">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Encargado</label>
-                    <input type="text" [(ngModel)]="selectedServicio.encargado" class="form-control" placeholder="Ingrese el encargado">
-                  </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Estado</label>
-                  <input type="text" [(ngModel)]="selectedServicio.estado" class="form-control" placeholder="Ingrese el estado">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                  <input type="number" [(ngModel)]="selectedServicio.fecha" class="form-control" placeholder="Ingrese la fecha">
-                </div>
+      <div class="container">
+           <!-- Info boxes -->
+           <div class="row p-2">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre servicio</label>
+                <input type="text" [(ngModel)]="selectedServicio.nombreServicio" class="form-control" placeholder="Ingrese el nombre">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Categoría</label>
+                <input type="text" [(ngModel)]="selectedServicio.categoria" class="form-control" placeholder="Ingrese el documento">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                <select [(ngModel)]="selectedServicio.estado" class="form-select" aria-label="Default select example">
+                  <option value="Agotado">Agotado</option>
+                  <option value="Disponible">Disponible</option>
+                </select>
               </div>
             </div>
+          </div>
 
 
-        </div>
-
-    
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="agregarServicio()" data-dismiss="modal">Guardar</button>
-      </div>
+
+  
     </div>
-
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-primary" (click)="agregarServicio()" data-dismiss="modal">Guardar</button>
+    </div>
   </div>
+
+</div>
 </div>
 
 
 
-    </section>
-  
-
-  </div>
+</div>

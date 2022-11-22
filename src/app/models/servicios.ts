@@ -1,8 +1,7 @@
 export class Servicios {
-    id!: number;
-    nombre!: string;
+    idServicio!: number;
+    nombreServicio!: string;
     categoria!: string;
-    encargado!: string;
     estado!: string;
     fecha!: string;
 }

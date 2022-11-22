@@ -104,11 +104,12 @@
 
         <div class="container">
              <!-- Info boxes -->
+             <form>
             <div class="row p-2">
             <div class="col-md-12">
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nombre cliente</label>
-                <input type="text" [(ngModel)]="editCliente.nombreCliente" class="form-control" placeholder="Ingrese el nombre">
+                <input type="text" formControlName="nombre" class="form-control" placeholder="Ingrese el nombre">                
               </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Documento</label>
@@ -134,6 +135,7 @@
             </div>
           </div>
         </div>
+      </form>
         </div>
 
 
@@ -141,14 +143,9 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         
-        <button type="button" class="btn btn-primary" (click)="editarCliente()" data-dismiss="modal">Modificar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editarCliente()">Modificar</button>
       </div>
     </div>
-
-
-
-
-
 
   </div>
 </div>

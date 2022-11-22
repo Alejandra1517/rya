@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Roles } from '../models/roles'
 
@@ -10,7 +11,7 @@ import { Roles } from '../models/roles'
 export class ConfiguracionComponent {
 
 
-  constructor() { }
+  constructor(private toastrSve: ToastrService) {}
 
 
   rolesArray: Roles[] = [
@@ -33,35 +34,57 @@ export class ConfiguracionComponent {
     }
   ];
 
-  selectedUSer: Roles = new Roles();
+  selectedRol: Roles = new Roles();
+  editRol:any = {};
 
-  agregarUsuario(){
+
+
+  agregarRol(){
   
-    // this.selectedUSer.id = this.RolesArray.length + 1;
-    this.rolesArray.push(this.selectedUSer);
+    this.rolesArray.push(this.selectedRol);
 
-    this.selectedUSer = new Roles() //Limpia el campo de texto
+    this.selectedRol = new Roles() //Limpia el campo de texto
+    
+    // this.selectedCliente.id += 1;
+
+    this.toastrSve.success('Agregado correctamente');
 
 
   }
   
 
 
-  cargarUsu(usuario: Roles){
+  cargarRol(rol: Roles){
 
-    // usuario
-
-    // this.selectedUSer.id = this.usuariosArray[usuarios.id];
+    this.editRol=this.selectedRol; 
 
   }
 
 
-  eliminarUsu(){
+  
+  editarCliente(){
 
+    this.selectedRol = this.editRol
+
+    this.toastrSve.info('Editado correctamente')
+      
+
+  }
+
+
+  eliminarRol(){
+
+   
     if (confirm("¿Está seguro de eliminar el usuario?")){
 
+      this.rolesArray = this.rolesArray.filter(x => x != this.selectedRol)
+     
+      this.selectedRol = new Roles()
+
+      this.toastrSve.error('Eliminado correctamente')
 
     }
+
 
 
   }

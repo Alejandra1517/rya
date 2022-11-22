@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 
 import { Materiales } from '../models/materiales';
 
@@ -8,6 +10,8 @@ import { Materiales } from '../models/materiales';
   styleUrls: ['./materiales.component.css']
 })
 export class MaterialesComponent {
+
+  constructor(private toastrSve: ToastrService){}
 
   materialesArray: Materiales[] = [
     {

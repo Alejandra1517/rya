@@ -8,9 +8,14 @@ import { Clientes } from '../models/clientes'
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.css']
 })
+
 export class ClientesComponent {
 
+  // resultado!: string;
+
+
   constructor(private toastrSve: ToastrService) {}
+
 
 
   clientesArray: Clientes[] = [
@@ -58,9 +63,25 @@ export class ClientesComponent {
   
   cargarCliente(cliente: Clientes){
 
-    this.editCliente=cliente; 
+    this.editCliente=cliente;
+    
+    
+ 
 
   }
+
+     
+       //Validaciones formulario modificar clientes
+      //  formularioContacto = new FormGroup({
+      //   nombre: new FormControl('', [Validators.required, Validators.minLength(10)])
+      // });
+    
+      // submit() {
+      //   if (this.formularioContacto.valid)
+      //     this.resultado = "Todos los datos son válidos";
+      //     this.agregarCliente();
+          
+      // }
 
 
   editarCliente(){
@@ -90,6 +111,18 @@ export class ClientesComponent {
   }
 
 
-  
+// //Validaciones formulario crear clientes
+//   registroClientes = new FormGroup({
+//     nombre: new FormControl('', [Validators.required, Validators.minLength(10)])
+//   });
+
+
+//   crearsubmit() {
+//     if (this.formularioContacto.valid)
+//       this.resultado = "Todos los datos son válidos";
+//       this.agregarCliente();
+      
+//   }
+
 
 }
