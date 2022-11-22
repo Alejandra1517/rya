@@ -1,8 +1,7 @@
-export class Usuarios {
+export class Roles {
 
-    idUsuario!: number;
+    idRol!: number;
     nombreRol!: string;
-    contrasena!: string;
     estado!: string;
     fechaRegistro!: string;
     

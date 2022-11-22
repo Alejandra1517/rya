@@ -10,24 +10,20 @@ export class UsuariosComponent {
 
   usuariosArray: Usuarios[] = [
     {
-      id: 1,
-      nombre: "Betsy",
-      apellido: "García",
-      documento: "156324891",
-      telefono: 1317632689,
-      direccion: "cll 20",
+      idUsuario: 1,
+      nombreRol: "Cliente",
+      contrasena: "cliente123",
       estado: "activo",
-      fecha: ""
+      fechaRegistro: "17/02/2022"
     },
     {
-      id: 2,
-      nombre: "Evelin",
-      apellido: "Castañeda",
-      documento: "1026130800",
-      telefono: 1317632689,
-      direccion: "cll 20",
+  
+      idUsuario: 2,
+      nombreRol: "Administrador",
+      contrasena: "admin123",
       estado: "activo",
-      fecha: ""
+      fechaRegistro: "17/02/2022"
+  
     }
   ];
 
@@ -45,7 +41,7 @@ export class UsuariosComponent {
   
 
 
-  cargarUsu(id: number){
+  cargarUsu(usuario: Usuarios){
 
     // usuario
 

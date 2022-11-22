@@ -43,29 +43,23 @@
                           <table id="example2" class="table table-bordered table-hover">
                             <thead class="table-dark">
                             <tr>
-                              <th>Id</th>
-                              <th>Nombre</th>
-                              <th>Apellido</th>
-                              <th>Documento</th>
-                              <th>Teléfono</th>
-                              <th>Dirección</th>
+                              <th>Id Usuario</th>
+                              <th>Nombre rol</th>
+                              <th>Contraseña</th>
                               <th>Estado</th>
-                              <th>Fecha</th>
+                              <th>Fecha de registro</th>
                               <th>Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let usuario of usuariosArray">
-                               <td>{{ usuario.id }}</td>
-                               <td>{{ usuario.nombre }}</td>
-                               <td>{{ usuario.apellido }}</td>
-                               <td>{{ usuario.documento }}</td>
-                               <td>{{ usuario.telefono }}</td>
-                               <td>{{ usuario.direccion }}</td>
+                               <td>{{ usuario.idUsuario }}</td>
+                               <td>{{ usuario.nombreRol }}</td>
+                               <td>{{ usuario.contrasena }}</td>
                                <td>{{ usuario.estado }}</td>
-                               <td>{{ usuario.fecha }}</td>
+                               <td>{{ usuario.fechaRegistro }}</td>
                                
-                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario.id)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarUsu()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarUsu()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
                          
                             </tbody>
                            
@@ -99,7 +93,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -108,19 +102,19 @@
 
         <div class="container">
              <!-- Info boxes -->
-        <div class="row p-4">
-          <div class="col-md-6">
+        <div class="row p-2">
+          <div class="col-md-12">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-              <input type="text" [(ngModel)]="selectedUSer.nombre"  class="form-control" placeholder="Ingrese su nombre">
+              <label for="exampleFormControlInput1" class="form-label">Nombre rol</label>
+              <input type="text" [(ngModel)]="selectedUSer.nombreRol"  class="form-control" placeholder="Ingrese el nombre del rol">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-              <input type="text" [(ngModel)]="selectedUSer.apellido" class="form-control" placeholder="Ingrese su apellido">
+              <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+              <input type="password" [(ngModel)]="selectedUSer.contrasena" class="form-control" placeholder="Ingrese una contraseña">
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Documento</label>
-              <input type="text" [(ngModel)]="selectedUSer.documento" class="form-control" placeholder="Ingrese su documento">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Marque el estado</label>
             </div>
           </div>
         </div>
@@ -162,28 +156,16 @@
              <div class="row p-2">
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                  <input type="text" [(ngModel)]="selectedUSer.nombre"  class="form-control" placeholder="Ingrese su nombre">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre rol</label>
+                  <input type="text" [(ngModel)]="selectedUSer.nombreRol"  class="form-control" placeholder="Ingrese un nombre de rol">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                  <input type="text" [(ngModel)]="selectedUSer.apellido" class="form-control" placeholder="Ingrese su apellido">
+                  <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+                  <input type="password" [(ngModel)]="selectedUSer.contrasena" class="form-control" placeholder="Ingrese una contraseña">
                 </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Documento</label>
-                  <input type="text" [(ngModel)]="selectedUSer.documento" class="form-control" placeholder="Ingrese su documento">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
-                  <input type="number" [(ngModel)]="selectedUSer.telefono" class="form-control" placeholder="Ingrese su telefóno">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Dirección</label>
-                  <input type="text" [(ngModel)]="selectedUSer.direccion" class="form-control" placeholder="Ingrese su dirección">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                  <input type="date" [(ngModel)]="selectedUSer.fecha" class="form-control" placeholder="Ingrese su fecha">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Marque el estado</label>
                 </div>
               </div>
             </div>
