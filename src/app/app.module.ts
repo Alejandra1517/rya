@@ -6,24 +6,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainHeaderComponent } from './main-header/main-header.component';
-import { ControlSidebarComponent } from './control-sidebar/control-sidebar.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { MaterialesComponent } from './materiales/materiales.component';
-import { ServiciosComponent } from './servicios/servicios.component';
-import { EmpleadosComponent } from './empleados/empleados.component';
-import { ClientesComponent } from './clientes/clientes.component';
-import { SolicitudesComponent } from './solicitudes/solicitudes.component';
-import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
-import { ObrasComponent } from './obras/obras.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
+import { ControlSidebarComponent } from './components/control-sidebar/control-sidebar.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { MaterialesComponent } from './components/materiales/materiales.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { CotizacionesComponent } from './components/cotizaciones/cotizaciones.component';
+import { ObrasComponent } from './components/obras/obras.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule, } from '@angular/platform-browser/animations';
-import { ConfiguracionComponent } from './configuracion/configuracion.component';
-import { CrearSolicitudComponent } from './crear-solicitud/crear-solicitud.component';
-import { ModificarSolicitudComponent } from './modificar-solicitud/modificar-solicitud.component';
-import { CrearCotizacionComponent } from './crear-cotizacion/crear-cotizacion.component';
-import { ModificarCotizacionComponent } from './modificar-cotizacion/modificar-cotizacion.component';
+import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { CrearSolicitudComponent } from './components/crear-solicitud/crear-solicitud.component';
+import { ModificarSolicitudComponent } from './components/modificar-solicitud/modificar-solicitud.component';
+import { CrearCotizacionComponent } from './components/crear-cotizacion/crear-cotizacion.component';
+import { ModificarCotizacionComponent } from './components/modificar-cotizacion/modificar-cotizacion.component';
 // import { EnsayoComponent } from './ensayo/ensayo.component';
 
 
@@ -43,7 +43,6 @@ const appRoutes:Routes = [
   {path: 'modificar-solicitud', component:ModificarSolicitudComponent},
   {path: 'crear-cotizacion', component:CrearCotizacionComponent},
   {path: 'modificar-cotizacion', component:ModificarCotizacionComponent}
-  // {path: 'ensayo', component:EnsayoComponent}
 
 
 
@@ -68,19 +67,20 @@ const appRoutes:Routes = [
     ModificarSolicitudComponent,
     CrearCotizacionComponent,
     ModificarCotizacionComponent
-    // EnsayoComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     // ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+      RouterModule.forRoot(appRoutes),
+      BrowserAnimationsModule, // required animations module
+      ToastrModule.forRoot(), // ToastrModule added
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
