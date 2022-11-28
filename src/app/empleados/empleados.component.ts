@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Empleados } from '../models/empleados';
 
 
@@ -9,9 +11,10 @@ import { Empleados } from '../models/empleados';
 })
 export class EmpleadosComponent  {
 
+
   
   
-  empleadosArray: Empleados[] = [
+  empleados: Empleados[] = [
     {
       id: 1,
       nombre: "Andrés",
@@ -35,41 +38,92 @@ export class EmpleadosComponent  {
     }
   ];
 
-  selectedEmpleado: Empleados = new Empleados();
-
-  agregarEmpleado(){
-  
-    // this.selectedUSer.id = this.usuariosArray.length + 1;
-    this.empleadosArray.push(this.selectedEmpleado);
-
-    this.selectedEmpleado = new Empleados() //Limpia el campo de texto
 
 
-  }
-  
+empleadosForm: FormGroup;
+empleadosEditForm: FormGroup;
 
 
-  cargarEmpleado(id: number){
-
-    // usuario
-
-    // this.selectedUSer.id = this.usuariosArray[usuarios.id];
-
-  }
+constructor(private fb: FormBuilder,
+  private toastrSve: ToastrService) {
 
 
-  eliminarEmpleado(){
 
-    if (confirm("¿Está seguro de eliminar el empleado?")){
+    this.empleadosForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      telefono: ['', Validators.required],
+      documento: ['', Validators.required],
+      direccion: ['', Validators.required]
+    })
 
+    this.empleadosEditForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      telefono: ['', Validators.required],
+      documento: ['', Validators.required],
+      direccion: ['', Validators.required]
 
-    }
+    })
 
 
   }
 
-  
 
+selectedEmpleado: Empleados = new Empleados();
+
+agregarEmpleado(){
+
+  this.empleados.push(this.selectedEmpleado);
+
+  this.toastrSve.success('Categoría registrada correctamente');
+
+  this.selectedEmpleado = new Empleados()
+
+}
+
+
+
+
+
+
+editEmpleado:any = {};
+
+cargarEmpleado(empleados: Empleados){
+  
+    this.editEmpleado = empleados
+
+}
+
+
+
+modificarEmpleado(){
+
+  this.toastrSve.info('Editado correctamente')
+
+    this.editEmpleado = new Empleados();
 
 
 }
+
+
+eliminarEmpleado(empleado: Empleados){
+
+  if (confirm("¿Está seguro de eliminar el empleado?")){
+
+    this.empleados = this.empleados.filter(x => x != empleado)
+   
+        empleado = new Empleados()
+  
+        this.toastrSve.error('Eliminado correctamente')
+
+  }
+
+
+}
+
+
+
+  }
+
+  

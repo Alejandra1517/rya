@@ -51,7 +51,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let obra of obrasArray">
+                            <tr *ngFor="let obra of obras">
                                <td>{{ obra.idObra }}</td>
                                <td>{{ obra.nombreCliente }}</td>
                                <td>{{ obra.servicios }}</td>
@@ -70,7 +70,7 @@
                                 </select>
                                </td>
                                
-                               <td><button class="btn btn-danger" (click)="eliminarObra()"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                               <td><button class="btn btn-danger" (click)="eliminarObra(obra)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
                          
                          
                             </tbody>

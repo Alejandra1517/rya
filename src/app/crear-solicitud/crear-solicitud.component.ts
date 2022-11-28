@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { crearSolicitud } from '../models/crearSolicitud';
 
@@ -8,13 +9,16 @@ import { crearSolicitud } from '../models/crearSolicitud';
   templateUrl: './crear-solicitud.component.html',
   styleUrls: ['./crear-solicitud.component.css']
 })
-export class CrearSolicitudComponent implements OnInit {
-
-  constructor(private toastrSve: ToastrService) { }
+export class CrearSolicitudComponent {
 
 
 
-  solicitudesArray: crearSolicitud[] = [
+
+  // constructor(private toastrSve: ToastrService) { }
+
+
+
+  solicitudes: crearSolicitud[] = [
     {
 
      servicio: "baldosa",
@@ -32,66 +36,80 @@ export class CrearSolicitudComponent implements OnInit {
   ];
 
 
-  selectedSolicitud: crearSolicitud = new crearSolicitud();
-
-  editSolicitud:any = {};
-
-  agregarCliente(){
   
-    this.solicitudesArray.push(this.selectedSolicitud);
-
-    this.selectedSolicitud = new crearSolicitud() //Limpia el campo de texto
-    
-    // this.selectedCliente.id += 1;
-
-    this.toastrSve.success('Agregado correctamente');
-
-    
+  solicitudesForm: FormGroup;
+  solicitudesEditForm: FormGroup;
 
 
-  }
-
-
-  
-  cargarCliente(cliente: crearSolicitud){
-
-    this.editSolicitud=cliente; 
-
-  }
-
-
-  editarCliente(){
-
-    this.selectedSolicitud = this.editSolicitud
-
-    this.toastrSve.info('Editado correctamente')
-      
-
-  }
+  constructor(private fb: FormBuilder,
+    private toastrSve: ToastrService) {
 
 
 
-  eliminarCliente(){
+      this.solicitudesForm = this.fb.group({
+        servicio: ['', Validators.required],
+        cantidad: ['', Validators.required],
+        descripcion: ['', Validators.required]
+      })
 
-    if (confirm("¿Está seguro de eliminar el usuario?")){
+      this.solicitudesEditForm = this.fb.group({
+        servicio: ['', Validators.required],
+        cantidad: ['', Validators.required],
+        descripcion: ['', Validators.required]
+      })
 
-      this.solicitudesArray = this.solicitudesArray.filter(x => x != this.selectedSolicitud)
-     
-      this.selectedSolicitud = new crearSolicitud()
-
-      this.toastrSve.error('Eliminado correctamente')
 
     }
 
 
+  selectedSolicitudes: crearSolicitud = new crearSolicitud();
+
+  agregarSolicitud(){
+  
+    this.solicitudes.push(this.selectedSolicitudes);
+
+    this.toastrSve.success('Categoría registrada correctamente');
+
+    this.selectedSolicitudes = new crearSolicitud()
+
+  }
+  
+  
+
+
+  
+
+  editSolicitud:any = {};
+
+  cargarSolicitud(materiales: crearSolicitud){
+    
+      this.editSolicitud = materiales
+
   }
 
 
 
+  modificarSolicitud(){
 
-  ngOnInit(): void {
+    this.toastrSve.info('Editado correctamente')
 
-    console.log("hola")
+      this.editSolicitud = new crearSolicitud();
+
+
+  }
+
+
+  eliminarSolicitud(solicitud: crearSolicitud){
+
+    if (confirm("¿Está seguro de eliminar la solicitud?")){
+
+      this.solicitudes = this.solicitudes.filter(x => x != solicitud)
+     
+          solicitud = new crearSolicitud()
+    
+          this.toastrSve.error('Eliminado correctamente')
+
+    }
 
 
   }

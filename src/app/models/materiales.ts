@@ -2,6 +2,6 @@ export class Materiales {
     id!: number;
     categoria!: string;
     infoMaterial!: string;
-    estado!: string;
-    fecha!: string;
+    estado: string = "activo";
+    fecha: string = "28/11/2022";
 }

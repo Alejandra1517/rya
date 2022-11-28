@@ -1,9 +1,10 @@
 export class Clientes {
-    idCliente!: number;
+    _id: number = 3;
     nombreCliente!: string;
     documento!: string;
     telefono!: number;
     direccion!: string;
-    estado!: string;
-    fecha!: string;
+    estado: string = "Activo";
+    fecha: string = "Fecha";
+
 }

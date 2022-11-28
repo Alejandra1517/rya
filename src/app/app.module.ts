@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +22,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule, } from '@angular/platform-browser/animations';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { CrearSolicitudComponent } from './crear-solicitud/crear-solicitud.component';
-import { ModificarSolicitudComponent } from './modificar-solicitud/modificar-solicitud.component'
+import { ModificarSolicitudComponent } from './modificar-solicitud/modificar-solicitud.component';
+import { CrearCotizacionComponent } from './crear-cotizacion/crear-cotizacion.component';
+import { ModificarCotizacionComponent } from './modificar-cotizacion/modificar-cotizacion.component'
 
 
 
@@ -36,6 +40,8 @@ const appRoutes:Routes = [
   {path: 'obras', component:ObrasComponent},
   {path: 'configuracion', component:ConfiguracionComponent},
   {path: 'crear-solicitud', component:CrearSolicitudComponent},
+  {path: 'crear-cotizacion', component:CrearCotizacionComponent},
+  {path: 'modificar-cotizacion', component:ModificarCotizacionComponent},
   {path: 'modificar-solicitud', component:ModificarSolicitudComponent}
 
 
@@ -58,12 +64,16 @@ const appRoutes:Routes = [
     ObrasComponent,
     ConfiguracionComponent,
     CrearSolicitudComponent,
-    ModificarSolicitudComponent
+    ModificarSolicitudComponent,
+    CrearCotizacionComponent,
+    ModificarCotizacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added

@@ -1,8 +1,8 @@
 export class Solicitudes{
 
-    idSolicitud!: number;
+    idSolicitud: number = 3;
     nombreCliente!: string;
     servicios!: string;
-    estado!: string;
+    estado: string = "Activo";
 
 }

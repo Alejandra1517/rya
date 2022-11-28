@@ -1,95 +1,119 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-
 import { Clientes } from '../models/clientes'
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.css']
 })
-export class ClientesComponent {
+export class ClientesComponent implements OnInit{
 
-  constructor(private toastrSve: ToastrService) {}
+  clientes:Clientes[] = [
 
-
-  clientesArray: Clientes[] = [
     {
-      idCliente: 1,
-      nombreCliente: "Jorge123",
-      documento: "156324891",
-      telefono: 3137632689,
-      direccion: "cll 87a",
-      estado: "activo",
-      fecha: "20/17/2022"
-    },
-    {
-      idCliente: 2,
-      nombreCliente: "Julian123",
+
+      _id: 1,
+      nombreCliente: "Alejandra",
       documento: "1026130800",
-      telefono: 313987323,
-      direccion: "cll 20",
-      estado: "activo",
-      fecha: "20/17/2022"
+      telefono: 23323432,
+      direccion: "Medellín",
+      estado: "Activo",
+      fecha: "03/05/2022"
+
     }
+
   ];
 
+  clienteForm: FormGroup;
+  clienteEditForm: FormGroup;
 
+
+  constructor(private fb: FormBuilder,
+    private toastrSve: ToastrService) {
+
+
+
+      this.clienteForm = this.fb.group({
+        nombreCliente: ['', Validators.required],
+        documento: ['', Validators.required],
+        telefono: ['', Validators.required],
+        direccion: ['', Validators.required]
+      })
+
+      this.clienteEditForm = this.fb.group({
+        nombreCliente: ['', Validators.required],
+        documento: ['', Validators.required],
+        telefono: ['', Validators.required],
+        direccion: ['', Validators.required]
+      })
+  
+
+
+    }
+
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  
   selectedCliente: Clientes = new Clientes();
-
-  editCliente:any = {};
 
   agregarCliente(){
   
-    this.clientesArray.push(this.selectedCliente);
+    this.clientes.push(this.selectedCliente);
 
-    this.selectedCliente = new Clientes() //Limpia el campo de texto
-    
-    // this.selectedCliente.id += 1;
+    this.toastrSve.success('El producto fue registrado con exito!', 'Producto Registrado!');
 
-    this.toastrSve.success('Agregado correctamente');
-
-    
-
+    this.selectedCliente = new Clientes()
 
   }
+  
+  
 
 
   
-  cargarCliente(cliente: Clientes){
 
-    this.editCliente=cliente; 
+  editCliente:any = {};
+
+  cargarCliente(clientes: Clientes){
+    
+      this.editCliente = clientes
 
   }
 
 
-  editarCliente(){
 
-    this.selectedCliente = this.editCliente
+  modificarCliente(){
 
     this.toastrSve.info('Editado correctamente')
-      
+
+      this.editCliente = new Clientes();
+
 
   }
 
 
+  eliminarCliente(cliente: Clientes){
 
-  eliminarCliente(){
+    if (confirm("¿Está seguro de eliminar este usuario?")){
 
-    if (confirm("¿Está seguro de eliminar el usuario?")){
-
-      this.clientesArray = this.clientesArray.filter(x => x != this.selectedCliente)
+      this.clientes = this.clientes.filter(x => x != cliente)
      
-      this.selectedCliente = new Clientes()
-
-      this.toastrSve.error('Eliminado correctamente')
+          cliente = new Clientes()
+    
+          this.toastrSve.error('Eliminado correctamente')
 
     }
 
 
+
+    
+
   }
-
-
-  
 
 }

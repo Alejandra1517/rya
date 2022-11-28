@@ -1,11 +1,9 @@
 export class Usuarios {
-    id!: number;
-    nombre!: string;
-    apellido!: string;
-    documento!: string;
-    telefono!: number;
-    direccion!: string;
-    estado!: string;
-    fecha!: string;
 
+    idUsuario: number = 3;
+    nombreRol!: string;
+    contrasena!: string;
+    estado:string = "activo";
+    fechaRegistro: string = "28/11/2022";
+    
 }

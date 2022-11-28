@@ -15,7 +15,7 @@ export class ObrasComponent {
   constructor(private toastrSve: ToastrService) {}
 
 
-  obrasArray: Obras[] = [
+  obras: Obras[] = [
     {
       idObra:1,
       nombreCliente:"Julian",
@@ -38,57 +38,19 @@ export class ObrasComponent {
 
   selectedObra: Obras = new Obras();
 
-  editCliente:any = {};
 
-  agregarObra(){
-  
-    this.obrasArray.push(this.selectedObra);
+  eliminarObra(obra: Obras){
 
-    this.selectedObra = new Obras() //Limpia el campo de texto
-    
-    // this.selectedCliente.id += 1;
+    if (confirm("¿Está seguro de eliminar esta obra?")){
 
-    this.toastrSve.success('Agregado correctamente');
-
-    
-
-
-  }
-
-
-  
-  cargarObra(obras: Obras){
-
-    this.selectedObra=obras; 
-
-  }
-
-
-  editarObra(){
-
-    this.selectedObra = this.selectedObra
-
-    this.toastrSve.info('Editado correctamente')
-      
-
-  }
-
-  
-
-
-
-  eliminarObra(){
-
-    if (confirm("¿Está seguro de eliminar el usuario?")){
-
-      this.obrasArray = this.obrasArray.filter(x => x != this.selectedObra)
-
+      this.obras = this.obras.filter(x => x != obra)
      
-      this.selectedObra = new Obras()
-
-      this.toastrSve.error('Eliminado correctamente')
+          obra = new Obras()
+    
+          this.toastrSve.error('Eliminado correctamente')
 
     }
+
 
 
   }
