@@ -1,7 +1,7 @@
 export class Servicios {
-    id!: number;
+    id: number = 3;
     nombre!: string;
-    categoria!: string;
-    estado: string = "activo";
+    categoria: string = "Obra blanca"
+    estado: string = "Activo";
     fecha: string = "28/11/2022";
 }

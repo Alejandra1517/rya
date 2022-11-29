@@ -43,6 +43,8 @@ export class EmpleadosComponent  {
 empleadosForm: FormGroup;
 empleadosEditForm: FormGroup;
 
+pattern:any =  "^[a-zA-Z\s]{1,254}"
+
 
 constructor(private fb: FormBuilder,
   private toastrSve: ToastrService) {
@@ -50,16 +52,16 @@ constructor(private fb: FormBuilder,
 
 
     this.empleadosForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', Validators.required, Validators.pattern(this.pattern)],
+      apellido: ['', Validators.required, Validators.pattern(this.pattern)],
       telefono: ['', Validators.required],
       documento: ['', Validators.required],
       direccion: ['', Validators.required]
     })
 
     this.empleadosEditForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', Validators.required, Validators.pattern(this.pattern)],
+      apellido: ['', Validators.required, Validators.pattern(this.pattern)],
       telefono: ['', Validators.required],
       documento: ['', Validators.required],
       direccion: ['', Validators.required]
@@ -76,7 +78,7 @@ agregarEmpleado(){
 
   this.empleados.push(this.selectedEmpleado);
 
-  this.toastrSve.success('Categoría registrada correctamente');
+  this.toastrSve.success('Registrado correctamente');
 
   this.selectedEmpleado = new Empleados()
 

@@ -108,7 +108,7 @@
 
       <div class="container">
            <!-- Info boxes -->
-           <div class="row p-2">
+           <div class="row">
       
             <div class="col-lg-12">
                       <form class="mt-3" [formGroup]="empleadosForm" (ngSubmit)="agregarEmpleado()">
@@ -119,6 +119,10 @@
                                   *ngIf="empleadosForm.get('nombre')?.hasError('required') && empleadosForm.get('nombre')?.touched">
                                   <span>El campo es <strong>es obligatorio</strong></span>
                               </div>
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('nombre')?.hasError('pattern') && empleadosForm.get('nombre')?.dirty">
+                                  <span>Ingrese solo <strong> texto </strong></span>
+                              </div>
                           </div>
                           <div class="mb-3">
                               <input type="text" formControlName="apellido" [(ngModel)]="selectedEmpleado.apellido" class="form-control form-control-lg"
@@ -126,6 +130,10 @@
                               <div class="text-danger"
                                   *ngIf="empleadosForm.get('apellido')?.hasError('required') && empleadosForm.get('apellido')?.touched">
                                   <span>El campo <strong>es obligatorio</strong></span>
+                              </div>
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('apellido')?.hasError('pattern') && empleadosForm.get('apellido')?.dirty">
+                                  <span>Ingrese solo <strong> texto </strong></span>
                               </div>
                           </div>
 
@@ -166,7 +174,7 @@
                           <div class="mb-3" class="modal-footer">
                               <!-- <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button> -->
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                          <button type="submit" [disabled]="empleadosForm.invalid" class="btn btn-success">Registar</button>
+                          <button  [disabled]="empleadosForm.invalid" type="submit"  class="btn btn-success">Registar</button>
                           </div>
                       </form>
                   </div>
@@ -205,7 +213,7 @@
 
       <div class="container">
            <!-- Info boxes -->
-      <div class="row p-4">
+      <div class="row">
        
 
         <div class="col-lg-12">
@@ -218,6 +226,10 @@
                       *ngIf="empleadosEditForm.get('nombre')?.hasError('required') && empleadosEditForm.get('nombre')?.touched">
                       <span>El este campo<strong>es obligatorio</strong></span>
                   </div>
+                  <div class="text-danger"
+                  *ngIf="empleadosEditForm.get('nombre')?.hasError('pattern') && empleadosEditForm.get('nombre')?.dirty">
+                  <span>Ingrese solo <strong> texto </strong></span>
+              </div>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Apellido</label>
@@ -227,6 +239,10 @@
                       *ngIf="empleadosEditForm.get('apellido')?.hasError('required') && empleadosEditForm.get('apellido')?.touched">
                       <span>Este campo <strong>es obligatoria</strong></span>
                   </div>
+                  <div class="text-danger"
+                  *ngIf="empleadosEditForm.get('apellido')?.hasError('pattern') && empleadosEditForm.get('apellido')?.dirty">
+                  <span>Ingrese solo <strong> texto </strong></span>
+              </div>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Documento</label>

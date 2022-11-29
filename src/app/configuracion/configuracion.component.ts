@@ -35,6 +35,8 @@ export class ConfiguracionComponent {
   rolesForm: FormGroup;
   rolesEditForm: FormGroup;
 
+  pattern:any =  "^[a-zA-Z\s]{1,254}"
+
 
 constructor(private fb: FormBuilder,
   private toastrSve: ToastrService) {
@@ -42,13 +44,11 @@ constructor(private fb: FormBuilder,
 
 
     this.rolesForm = this.fb.group({
-      nombreRol: ['', Validators.required],
-      estado: ['', Validators.required]
+      nombreRol: ['', [Validators.required, Validators.pattern(this.pattern)]]
     })
 
     this.rolesEditForm = this.fb.group({
-      nombreRol: ['', Validators.required],
-      estado: ['', Validators.required]
+      nombreRol: ['', [Validators.required, Validators.pattern(this.pattern)]]
     })
 
 
@@ -61,7 +61,7 @@ agregarRoles(){
 
   this.roles.push(this.selectedRoles);
 
-  this.toastrSve.success('El producto fue registrado con exito!', 'Producto Registrado!');
+  this.toastrSve.success('Registrado correctamente');
 
   // this.selectedEmpleado = new Servicios()
 

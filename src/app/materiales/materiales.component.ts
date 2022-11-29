@@ -17,14 +17,14 @@ export class MaterialesComponent {
           id: 1,
           categoria: "Ventana",
           infoMaterial: "Madera",
-          estado: "Activo",
+          estado: "Disponible",
           fecha: "13/12/2022"
         },
         {
           id: 2,
           categoria: "Pintura de interior",
           infoMaterial: "A base de color blanco",
-          estado: "Estado",
+          estado: "Disponible",
           fecha: "13/12/2022"
         }
 
@@ -33,6 +33,8 @@ export class MaterialesComponent {
   materialesForm: FormGroup;
   materialesEditForm: FormGroup;
 
+  pattern:any =  "^[a-zA-Z\s]{1,254}"
+
 
   constructor(private fb: FormBuilder,
     private toastrSve: ToastrService) {
@@ -40,13 +42,13 @@ export class MaterialesComponent {
 
 
       this.materialesForm = this.fb.group({
-        categoria: ['', Validators.required],
-        infoMaterial: ['', Validators.required]
+        categoria: ['', Validators.required, Validators.pattern(this.pattern)],
+        infoMaterial: ['', Validators.required, Validators.pattern(this.pattern)]
       })
 
       this.materialesEditForm = this.fb.group({
-        categoria: ['', Validators.required],
-        infoMaterial: ['', Validators.required]
+        categoria: ['', Validators.required, Validators.pattern(this.pattern)],
+        infoMaterial: ['', Validators.required, Validators.pattern(this.pattern)]
       })
 
 

@@ -111,7 +111,10 @@
                     *ngIf="rolesEditForm.get('nombreRol')?.hasError('required') && rolesEditForm.get('nombreRol')?.touched">
                     <span>El nombre del rol <strong>es obligatorio</strong></span>
                 </div>
-           
+            <div class="text-danger"
+                *ngIf="rolesEditForm.get('nombreRol')?.hasError('pattern') && rolesEditForm.get('nombreRol')?.dirty">
+                <span>Ingrese solo <strong> texto </strong></span>
+            </div>
             </div>
           
             <div class="form-check form-switch">
@@ -217,6 +220,10 @@
                   <div class="text-danger"
                   *ngIf="rolesForm.get('nombreRol')?.hasError('required') && rolesForm.get('nombreRol')?.touched">
                   <span>El nombre del rol <strong>es obligatorio</strong></span>
+              </div>
+              <div class="text-danger"
+              *ngIf="rolesForm.get('nombreRol')?.hasError('pattern') && rolesForm.get('nombreRol')?.dirty">
+              <span>Ingrese solo <strong> texto </strong></span>
               </div>
                 
                 </div>

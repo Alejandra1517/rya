@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Clientes } from '../models/clientes'
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -31,21 +31,21 @@ export class ClientesComponent{
   clientesForm: FormGroup;
   clientesEditForm: FormGroup;
 
+  pattern:any =  "^[a-zA-Z\s]{1,254}"
 
   constructor(private fb: FormBuilder,
     private toastrSve: ToastrService) {
 
 
-
       this.clientesForm = this.fb.group({
-        nombreCliente: ['', Validators.required],
-        documento: ['', Validators.required],
+        nombreCliente: ['', [Validators.required, Validators.pattern(this.pattern)]],
+        documento: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(11)]],
         telefono: ['', Validators.required],
         direccion: ['', Validators.required]
       })
 
       this.clientesEditForm = this.fb.group({
-        nombreCliente: ['', Validators.required],
+        nombreCliente: ['', [Validators.required, Validators.pattern(this.pattern)]],
         documento: ['', Validators.required],
         telefono: ['', Validators.required],
         direccion: ['', Validators.required]

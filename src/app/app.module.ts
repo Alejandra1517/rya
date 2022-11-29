@@ -25,7 +25,10 @@ import { CrearSolicitudComponent } from './crear-solicitud/crear-solicitud.compo
 import { ModificarSolicitudComponent } from './modificar-solicitud/modificar-solicitud.component';
 import { CrearCotizacionComponent } from './crear-cotizacion/crear-cotizacion.component';
 import { ModificarCotizacionComponent } from './modificar-cotizacion/modificar-cotizacion.component';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { ServiciosClientesComponent } from './servicios-clientes/servicios-clientes.component';
+import { SolicitudesClientesComponent } from './solicitudes-clientes/solicitudes-clientes.component';
+import { ObrasClientesComponent } from './obras-clientes/obras-clientes.component'
 
 
 
@@ -68,7 +71,10 @@ const appRoutes:Routes = [
     ModificarSolicitudComponent,
     CrearCotizacionComponent,
     ModificarCotizacionComponent,
-    FooterComponent
+    FooterComponent,
+    ServiciosClientesComponent,
+    SolicitudesClientesComponent,
+    ObrasClientesComponent
   ],
   imports: [
     BrowserModule,

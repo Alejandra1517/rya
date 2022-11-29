@@ -19,7 +19,7 @@ export class ServiciosComponent {
       id: 1,
       nombre: "Acabados",
       categoria: "Obra blanca",
-      estado: "activo",
+      estado: "Activo",
       fecha: "28/11/2022"
       
     },
@@ -28,7 +28,7 @@ export class ServiciosComponent {
         id: 2,
         nombre: "Baldosa",
         categoria: "Obra blanca",
-        estado: "activo",
+        estado: "Activo",
         fecha: "28/11/2022"
 
       }
@@ -38,6 +38,8 @@ export class ServiciosComponent {
 serviciosForm: FormGroup;
 serviciosEditForm: FormGroup;
 
+pattern:any =  "^[a-zA-Z\s]{1,254}"
+
 
 constructor(private fb: FormBuilder,
   private toastrSve: ToastrService) {
@@ -45,17 +47,11 @@ constructor(private fb: FormBuilder,
 
 
     this.serviciosForm = this.fb.group({
-      nombre: ['', Validators.required],
-      categoria: ['', Validators.required],
-      estado: ['', Validators.required],
-      fecha: ['', Validators.required]
+      nombre: ['', Validators.required, Validators.pattern(this.pattern)]
     })
 
     this.serviciosEditForm = this.fb.group({
-      nombre: ['', Validators.required],
-      categoria: ['', Validators.required],
-      estado: ['', Validators.required],
-      fecha: ['', Validators.required]
+      nombre: ['', Validators.required, Validators.pattern(this.pattern)]
     })
 
 
@@ -68,7 +64,7 @@ agregarServicio(){
 
   this.servicios.push(this.selectedServicio);
 
-  this.toastrSve.success('El producto fue registrado con exito!', 'Producto Registrado!');
+  this.toastrSve.success('Registrado correctamente');
 
   this.selectedServicio = new Servicios()
 
@@ -101,7 +97,7 @@ modificarServicio(){
 
 eliminarServicio(servicios: Servicios){
 
-  if (confirm("¿Está seguro de eliminar el usuario?")){
+  if (confirm("¿Está seguro de eliminar el servicio?")){
 
     this.servicios = this.servicios.filter(x => x != servicios)
    

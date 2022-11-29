@@ -45,7 +45,7 @@
                           <tr>
                             <th>Id Usuario</th>
                             <th>Nombre rol</th>
-                            <th>Contraseña</th>
+                            <th>Correo</th>
                             <th>Estado</th>
                             <th>Fecha de registro</th>
                             <th>Acciones</th>
@@ -55,7 +55,7 @@
                           <tr *ngFor="let usuario of usuarios">
                              <td>{{ usuario.idUsuario }}</td>
                              <td>{{ usuario.nombreRol }}</td>
-                             <td>{{ usuario.contrasena }}</td>
+                             <td>{{ usuario.correo }}</td>
                              <td>{{ usuario.estado }}</td>
                              <td>{{ usuario.fechaRegistro }}</td>
                              
@@ -121,11 +121,44 @@
           >
             <span>El nombre del rol<strong>es obligatorio</strong></span>
           </div>
+          
+
+          <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('nombreRol')
+                ?.hasError('pattern') &&
+              usuariosEditForm.get('nombreRol')?.dirty
+            "
+          >
+            <span>Ingrese solamente <strong> texto </strong></span>
+          </div>
+        
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Correo</label>
+            <input type="text" formControlName="correo" [(ngModel)]="editUsuario.correo" class="form-control" placeholder="Ingrese un correo">
+         
+         
+            <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('correo')
+                ?.hasError('required') &&
+              usuariosEditForm.get('correo')?.touched
+            "
+          >
+            <span>El correo <strong> es obligatorio </strong></span>
+          </div>
+
 
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
-            <input type="text" formControlName="contasena" [(ngModel)]="editUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
+            <input type="password" formControlName="contrasena" [(ngModel)]="editUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
          
          
             <div
@@ -139,6 +172,7 @@
           >
             <span>La contraseña <strong>es obligatorio</strong></span>
           </div>
+
 
           </div>
           <div class="form-check form-switch">
@@ -200,11 +234,29 @@
                 *ngIf="usuariosForm.get('nombreRol')?.hasError('required') && usuariosForm.get('nombreRol')?.touched">
                 <span>El nombre del rol <strong>es obligatorio</strong></span>
             </div>
+
+            
+            <div class="text-danger"
+            *ngIf="usuariosForm.get('nombreRol')?.hasError('pattern') && usuariosForm.get('nombreRol')?.dirty">
+            <span>Ingrese solamente <strong> texto </strong></span>
+            </div>
              
               </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Correo</label>
+                <input type="text" formControlName="correo" [(ngModel)]="selectedUsuario.correo" class="form-control" placeholder="Ingrese un correo">
+              
+                <div class="text-danger"
+                *ngIf="usuariosForm.get('correo')?.hasError('required') && usuariosForm.get('correo')?.touched">
+                <span>El correo <strong> es obligatorio </strong></span>
+            </div>
+              
+              </div>
+
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
-                <input type="text" formControlName="contrasena" [(ngModel)]="selectedUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
+                <input type="password" formControlName="contrasena" [(ngModel)]="selectedUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
               
                 <div class="text-danger"
                 *ngIf="usuariosForm.get('contrasena')?.hasError('required') && usuariosForm.get('contrasena')?.touched">
@@ -213,7 +265,7 @@
               
               </div>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Marque el estado</label>
               </div>
             </div>

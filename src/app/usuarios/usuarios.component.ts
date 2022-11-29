@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { modificarSolicitud } from '../models/modificarSolicitud';
+
 import { Usuarios } from '../models/usuarios';
 
 @Component({
@@ -15,6 +15,7 @@ export class UsuariosComponent {
     {
       idUsuario: 1,
       nombreRol: "Cliente",
+      correo: "cliente@gmail.com",
       contrasena: "cliente123",
       estado: "activo",
       fechaRegistro: "17/02/2022"
@@ -23,6 +24,7 @@ export class UsuariosComponent {
   
       idUsuario: 2,
       nombreRol: "Administrador",
+      correo: "admin@gmail.com",
       contrasena: "admin123",
       estado: "activo",
       fechaRegistro: "17/02/2022"
@@ -34,6 +36,9 @@ export class UsuariosComponent {
   usuariosForm: FormGroup;
   usuariosEditForm: FormGroup;
 
+  pattern:any =  "^[a-zA-Z\s]{1,254}"
+  emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
   constructor(private fb: FormBuilder,
     private toastrSve: ToastrService) {
@@ -41,12 +46,14 @@ export class UsuariosComponent {
 
 
       this.usuariosForm = this.fb.group({
-        nombreRol: ['', Validators.required],
+        nombreRol: ['', Validators.required, Validators.pattern(this.pattern)],
+        correo: ['', Validators.required],
         contrasena: ['', Validators.required]
       })
 
       this.usuariosEditForm = this.fb.group({
-        nombreRol: ['', Validators.required],
+        nombreRol: ['', Validators.required, Validators.pattern(this.pattern)],
+        correo: ['', Validators.required],
         contrasena: ['', Validators.required]
       })
 
@@ -60,7 +67,7 @@ export class UsuariosComponent {
   
     this.usuarios.push(this.selectedUsuario);
 
-    this.toastrSve.success('El producto fue registrado con exito!', 'Producto Registrado!');
+    this.toastrSve.success('Registrado correctamente');
 
     this.selectedUsuario = new Usuarios()
 
